@@ -38,3 +38,16 @@ int (*test2(int n))[10]{
     }
     return &example;
 }
+
+void unordered_set_practice(void){
+    //unordered_set<int> uset;
+    unordered_set<int> uset{10,2,3,4,5,6,8,7};//
+    unordered_set<int> uset2(uset);
+
+    for(int print:uset){
+        cout<<print<<endl;
+    }
+    for(int print:uset2){
+        cout<<print<<endl;
+    }
+}

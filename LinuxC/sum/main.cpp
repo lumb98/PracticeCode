@@ -4,12 +4,15 @@ using namespace std;
 int main(void)
 {
 
+    
     //typedef int arrT[10];
     //using arrT=int[10];
     arrT ccc{10,20,3,4,5,6,7,8,9,10};
     arrT* bbb;
     //bbb=test(5);
     //bbb=&ccc;
+    unordered_set_practice();
+
     for(int i=0;i<10;++i){
         cout<<"bbb["<<i<<"]="<<(*test2(100))[i]<<endl;
     }
