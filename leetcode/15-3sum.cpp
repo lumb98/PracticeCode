@@ -1,3 +1,9 @@
+#include <iostream>
+#include <vector>
+#include <unordered_set>
+#include <algorithm>//用于sort排序
+using namespace std;
+
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
