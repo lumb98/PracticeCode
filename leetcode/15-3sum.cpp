@@ -65,3 +65,83 @@ public:
         return ans;
     }
 };
+
+
+
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        int n = nums.size();
+        if(n<3)
+            return {};
+        sort(nums.begin(), nums.end());
+        vector<vector<int>> ans;
+        for(int i=0;i<n;++i){
+            if(nums[i]>0)
+                return ans;
+            if(i>0&&nums[i]==nums[i-1]){
+                continue;
+            }
+            int start=i+1;
+            int end=n-1;
+            int target=0-nums[i];
+            while(start<end){
+                if(start>i+1&&nums[start]==nums[start-1]){
+                    ++start;
+                    continue;
+                }
+                
+                if(nums[start]+nums[end]>target){
+                    --end;
+                }else if(nums[start]+nums[end]<target)
+                    ++start;
+                else if(nums[start]+nums[end]==target){
+                    ans.push_back({nums[i],nums[start],nums[end]});
+                    end=n-1;
+                    ++start;
+                }
+            }
+        }
+        return ans;
+    }
+};
+
+//100ms内终极版，找到原因了，上面那个200ms是因为我每次找到数组之后，都把end复位，这个操作导致，多走了很多路。
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        int n = nums.size();
+        if(n<3)
+            return {};
+        sort(nums.begin(), nums.end());
+        vector<vector<int>> ans;
+        for(int i=0;i<n;++i){
+            if(nums[i]>0)
+                return ans;
+            if(i>0&&nums[i]==nums[i-1]){
+                continue;
+            }
+            int start=i+1;
+            int end=n-1;
+            int target=0-nums[i];
+            while(start<end){
+                
+                if(start>i+1&&nums[start]==nums[start-1]){
+                    ++start;
+                    continue;
+                }
+                int sum=nums[start]+nums[end];
+                if(sum>target){
+                    --end;
+                }else if(sum<target){
+                    ++start;
+                }else {
+                    ans.push_back({nums[i],nums[start],nums[end]});
+                    ++start;
+                    --end;
+                }
+            }
+        }
+        return ans;
+    }
+};
