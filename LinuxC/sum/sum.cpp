@@ -41,7 +41,7 @@ int (*test2(int n))[10]{
 
 void unordered_set_practice(void){
     //unordered_set<int> uset;
-    unordered_set<int> uset{10,2,3,4,5,6,8,7};//
+    unordered_set<int> uset{10,2,3,4,5,6,8,7};//值得注意的是当我们用下面的循环（范围for循环）打印时是与当前顺序相反的。
     unordered_set<int> uset2(uset);
 
     for(int print:uset){
