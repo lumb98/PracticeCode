@@ -6,6 +6,10 @@
 using namespace std;
 typedef int arrT[10];
 
+typedef char data_byte[16];
+template <typename T>
+data_byte* spilt_dataTobyte(const T &data,int target_len);
+
 // int sum(int &num1,int &num2);
 int fact(int &input);
 int fact2(void);
