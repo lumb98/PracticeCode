@@ -4,7 +4,7 @@
 // }
 
 template <typename T>
-data_byte* spilt_dataTobyte(const T &data,int target_len){
+data_byte* (const T &data,int target_len){
     T temp=data;
     int type_size=sizeof(temp);
     static data_byte res{};
