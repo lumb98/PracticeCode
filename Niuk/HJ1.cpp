@@ -7,6 +7,9 @@ int main(void){
     vector<string> storage;
     while (cin>>temp)
     {
+        // cout<<"input temp ="<<temp<<endl;
+        if(cin.get()=='\n')
+            break;
         storage.push_back(temp);
     }
     int size=storage.size();
