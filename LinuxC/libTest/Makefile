@@ -6,7 +6,7 @@ include= $(shell find ./ -name "*.hpp")
 lib=$(shell find ./lib/ -name "*.a")
 obj= main.o
 
-CFLAGS = -g -Wall -I include -L ./lib -l *.a
+CFLAGS = -g -Wall -I include
 
 
 $(prom):$(obj)	
