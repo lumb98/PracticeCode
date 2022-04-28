@@ -41,6 +41,6 @@ void merge_byteTodata(data_byte* data,T2 &res,int len){
 
 int VESC_RPM_can_send(int __fd,canid_t motor_ID,int RPM);
 int VESC_duty_can_send(int __fd,canid_t motor_ID,int duty);
-int VES_can_receive(int __fd,canid_t motor_ID);
+int VESC_can_receive(int __fd,canid_t motor_ID);
 
 #endif

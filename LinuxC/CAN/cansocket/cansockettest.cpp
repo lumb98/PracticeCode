@@ -9,6 +9,8 @@
 #include <linux/can/raw.h>
 #include <iostream>
 #include <iterator>
+#include <fstream>
+#include <sys/time.h>
 #include  "cansocket.hpp"
 // #include  "cansocket.cpp"
 #define command "/sbin/ip link set can0 type can bitrate 500000"//将CAN0波特率设置为125000 bps
@@ -40,9 +42,15 @@ int main()
     //     cout<<"output is :"<<output11<<endl;
     // }
     // return 0;
-    system(down);
-    system(command);
-    system(up);//上面三行关闭CAN设备，设置波特率后，重新打开CAN设备
+    int status(999);
+
+    status=system(down);
+    cout<<status<<endl;
+    status=system(command);
+    cout<<status<<endl;
+    status=system(up);//上面三行关闭CAN设备，设置波特率后，重新打开CAN设备
+    cout<<status<<endl;
+    
     int s, nbytes;
     struct sockaddr_can addr;
     struct ifreq ifr;
@@ -66,12 +74,25 @@ int main()
     // frame[0].data[7] = 0x00;
     // for(int i=0;i<100;i++)
     // {
+    ofstream data;
+    data.open("candata.txt",ios::out);
+    data<<"rpm"<<"         "<<"time_msec"<<endl;
+    struct timeval time;
+    gettimeofday(&time,NULL);
+    long startTime=time.tv_sec;
+    // while(1){
+    //     gettimeofday(&time,NULL);
+    //     cout<<((time.tv_sec-startTime)*1000+time.tv_usec/1000)<<endl;
+    // }
+    long time_msec;
+    int rpm;
     while(1){
         int i=0;
         int speed=0;
         float duty;
         cin>>duty;
         while(1){
+            //cout<<"hello"<<endl;
             //frame[0].data[7]++;
             // nbytes = write(s, &frame[0], sizeof(frame[0])); //发送 frame[0]
             // if(nbytes != sizeof(frame[0]))
@@ -79,8 +100,18 @@ int main()
             //     printf("Send Error frame[0]\n!");
             // }
             VESC_duty_can_send(s,0x74,duty*100000);
-            VES_can_receive(s,0x74);
-            while(i!=100000){
+            // VESC_RPM_can_send(s,0x74,speed);
+            
+            rpm=VESC_can_receive(s,0x74);
+            if(rpm!=-1){
+                gettimeofday(&time,NULL);
+                time_msec=((time.tv_sec-startTime)*1000+time.tv_usec/1000);
+                data<<rpm<<"         "<<time_msec<<endl;
+
+            }
+            
+            
+            while(i!=10000){
                 //cout<<i<<endl;
                 i++;
             }

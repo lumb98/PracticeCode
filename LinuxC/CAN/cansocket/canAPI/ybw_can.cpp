@@ -1,6 +1,6 @@
 #include "ybw_can.h"
 
-#define CANCOMMAND(can_num,bitrate) "/sbin/ip link set "#can_num" type can britrate "#bitrate //将CAN0波特率设置为125000 bps
+#define CANCOMMAND(can_num,bitrate) "/sbin/ip link set "#can_num" type can bitrate "#bitrate //将CAN0波特率设置为125000 bps
 #define CANUP(can_num) "ifconfig "#can_num" up"//打开CAN0
 #define CANDOWN(can_num) "ifconfig "#can_num" down"//关闭CAN0
 
@@ -14,10 +14,19 @@ using namespace std;
 // }
 
 
-// int main(){
-
-//     cout<<"hello"<<endl;
-// }
+int main(){
+    int can0;
+    int64_t data=10000;
+    data=data<<32;
+    can_frame sendframe;
+    sendframe.can_id=0x80000074;
+    can0=can_init("can0");
+    while(1){
+        usleep(10000);
+        can_send_8byte(can0,data,sendframe.can_id);
+    }
+    cout<<"hello"<<endl;
+}
 
 
 int can_init(char *name){
@@ -77,21 +86,27 @@ int can_init(char *name){
         cerr<<"error can't bind!!!"<<endl;
         return -1;
     }
+    return s;
 
 }
 //需求 给定 canid 和数据，将其发送。
 int can_send_8byte(int socket,int64_t data,canid_t can_id ){
     can_frame send_frame;
-    __u8 *temp=nullptr;
+    //__u8 temp[8]={};
     send_frame.can_id=can_id;
-    send_frame.can_dlc=8;
-    datatobyte(temp,data,BIGENDIAN);
+    send_frame.can_dlc=4;
+    datatobyte(send_frame.data,data,BIGENDIAN);
+    // for(int i=0;i<4;++i){
+    //     send_frame.data[i]=send_frame.data[i+4];
+    //     //send_frame.data[i+4]=0;
+    // }
+    //cout<<"here"<<endl;
     for(int i=0;i<8;++i)
-        send_frame.data[i]=temp[i];
+        cout<<(int)send_frame.data[i]<<endl;
     int nbytes;
     nbytes=write(socket,&send_frame,sizeof(send_frame));
     if(nbytes!=send_frame.can_dlc){
-        cerr<<"just sent "<<nbytes<<" Bytes data ,please check";
+        cerr<<"just sent "<<nbytes<<" Bytes data ,please check"<<endl;
         return -1;
     }
     return 0;
