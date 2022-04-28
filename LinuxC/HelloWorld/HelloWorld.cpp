@@ -3,7 +3,8 @@ using namespace std;
 #define put(helloworld) #helloworld
 int main(int argc,char *argv[])
 {
-    cout<<put(helloworld)<<endl;
+    short i;
+    cout<<sizeof(i)<<endl;
 
     return 0;
 }
