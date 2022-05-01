@@ -16,7 +16,7 @@
 typedef bool black_flag;
 
 int can_init(char *name);
-int can_send_8byte(int socket,int64_t data,canid_t can_id );
-int can_send_8byte(int socket,int64_t data,canid_t can_id );
+int can_send_8byte(int socket,__uint64_t data,canid_t can_id );
+int can_recv_8byte(int socket,__uint64_t *data,canid_t can_id /*,black_flag block=CAN_RECV_UNBLOCK*/);
 
 #endif // __YBW_CAN_H__

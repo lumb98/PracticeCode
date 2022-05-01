@@ -15,11 +15,13 @@ using namespace std;
 */
 
 // template <typename T>
-void datatobyte(__uint8_t *output, __int64_t data, int mod) ;
+
+void datatobyte(__uint8_t *output, __uint64_t data, int mod) ;
 
 
 // template <typename T>
-void bytetodata(__int64_t *output, __uint8_t* input, int mod);
+
+void bytetodata(__uint64_t *output, __uint8_t* input, int mod);
 
 
 #endif // __YBW_CONVERT_H__
