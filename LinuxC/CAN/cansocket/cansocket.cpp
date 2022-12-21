@@ -26,17 +26,22 @@ int VESC_RPM_can_send(int __fd,canid_t motor_ID,int RPM){
 int VESC_duty_can_send(int __fd,canid_t motor_ID,int duty){
     data_byte *byte_duty;
     byte_duty=spilt_dataTobyte(duty,4);
+    // for(int i=0;i<4;++i){
+    //     cout<<"data["<<i<<"]= "<<(int)(*(byte_duty)[i])<<endl;
+    // }
     can_frame duty_frame;
     duty_frame.can_id=0x80000000+motor_ID;
-    duty_frame.can_dlc=4;
+    duty_frame.can_dlc=8;
     for(int i=0;i<4;++i){
         duty_frame.data[i]=(*byte_duty)[i];
+        cout<<"data["<<i<<"]= "<<(int)duty_frame.data[i]<<endl;
     }
     int nbytes;
     nbytes = write(__fd, &duty_frame, sizeof(duty_frame));
+    cout<<nbytes<<"byte data!!!"<<endl;
     if(nbytes != sizeof(duty_frame))
     {
-        cerr<<"Send Error duty_frame\n!"<<endl;
+        cerr<<"Send Error duty_frame! just sent "<<nbytes<<"byte data!!!"<<endl;
         return -1;
     }
     return 0;
@@ -44,7 +49,7 @@ int VESC_duty_can_send(int __fd,canid_t motor_ID,int duty){
 
 #define VESC_reveive_data_DutyCurrentRpm 0x80000900
 
-int VES_can_receive(int __fd,canid_t motor_ID){
+int VESC_can_receive(int __fd,canid_t motor_ID){
     VESC_receive_dataTypeDef data;
     can_frame data_frame;
     int nbytes;
@@ -64,14 +69,14 @@ int VES_can_receive(int __fd,canid_t motor_ID){
         data.rpm|=data_frame.data[1]<<16;
         data.rpm|=data_frame.data[2]<<8;
         data.rpm|=data_frame.data[3];
-        cout<<"motor:"<<motor_ID<<endl;
-        cout<<"RPM="<<data.rpm<<"r/min"<<endl;
-        cout<<"duty="<<(float)data.duty/1000<<"%"<<endl;
-        cout<<"current="<<(float)data.current/10<<"A"<<endl;
+        // cout<<"motor:"<<motor_ID<<endl;
+        // cout<<"RPM="<<data.rpm<<"r/min"<<endl;
+        // cout<<"duty="<<(float)data.duty/1000<<"%"<<endl;
+        // cout<<"current="<<(float)data.current/10<<"A"<<endl;
     }
     
 
 
-    return 0;
+    return data.rpm;
 }
 
