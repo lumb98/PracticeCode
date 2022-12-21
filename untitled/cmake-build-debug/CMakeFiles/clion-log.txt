@@ -1,0 +1,62 @@
+"C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=C:/MinGW/bin/mingw32-make.exe -DCMAKE_C_COMPILER=C:/gcc-arm-none-eabi/bin/arm-none-eabi-gcc.exe -DCMAKE_CXX_COMPILER=C:/gcc-arm-none-eabi/bin/arm-none-eabi-g++.exe -G "CodeBlocks - MinGW Makefiles" -S C:\Users\WaitingForWind\OneDrive\CODE\untitled -B C:\Users\WaitingForWind\OneDrive\CODE\untitled\cmake-build-debug
+-- The C compiler identification is GNU 10.3.1
+-- The CXX compiler identification is GNU 10.3.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - failed
+-- Check for working C compiler: C:/gcc-arm-none-eabi/bin/arm-none-eabi-gcc.exe
+-- Check for working C compiler: C:/gcc-arm-none-eabi/bin/arm-none-eabi-gcc.exe - broken
+CMake Error at C:/Program Files/JetBrains/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/CMakeTestCCompiler.cmake:69 (message):
+  The C compiler
+
+    "C:/gcc-arm-none-eabi/bin/arm-none-eabi-gcc.exe"
+
+  is not able to compile a simple test program.
+
+  It fails with the following output:
+
+    Change Dir: C:/Users/WaitingForWind/OneDrive/CODE/untitled/cmake-build-debug/CMakeFiles/CMakeTmp
+    
+    Run Build Command(s):C:/MinGW/bin/mingw32-make.exe -f Makefile cmTC_00282/fast && C:/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_00282.dir\build.make CMakeFiles/cmTC_00282.dir/build
+    mingw32-make.exe[1]: Entering directory 'C:/Users/WaitingForWind/OneDrive/CODE/untitled/cmake-build-debug/CMakeFiles/CMakeTmp'
+    Building C object CMakeFiles/cmTC_00282.dir/testCCompiler.c.obj
+    C:\gcc-arm-none-eabi\bin\arm-none-eabi-gcc.exe    -o CMakeFiles\cmTC_00282.dir\testCCompiler.c.obj -c C:\Users\WaitingForWind\OneDrive\CODE\untitled\cmake-build-debug\CMakeFiles\CMakeTmp\testCCompiler.c
+    Linking C executable cmTC_00282.exe
+    "C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_00282.dir\link.txt --verbose=1
+    "C:\Program Files\JetBrains\CLion 2022.1.2\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\cmTC_00282.dir/objects.a
+    C:\gcc-arm-none-eabi\bin\arm-none-eabi-ar.exe qc CMakeFiles\cmTC_00282.dir/objects.a @CMakeFiles\cmTC_00282.dir\objects1.rsp
+    C:\gcc-arm-none-eabi\bin\arm-none-eabi-gcc.exe -Wl,--whole-archive CMakeFiles\cmTC_00282.dir/objects.a -Wl,--no-whole-archive -o cmTC_00282.exe -Wl,--out-implib,libcmTC_00282.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_00282.dir\linklibs.rsp
+    c:/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld.exe: unrecognized option '--major-image-version'
+    c:/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld.exe: use the --help option for usage information
+    collect2.exe: error: ld returned 1 exit status
+    CMakeFiles\cmTC_00282.dir\build.make:99: recipe for target 'cmTC_00282.exe' failed
+    mingw32-make.exe[1]: *** [cmTC_00282.exe] Error 1
+    mingw32-make.exe[1]: Leaving directory 'C:/Users/WaitingForWind/OneDrive/CODE/untitled/cmake-build-debug/CMakeFiles/CMakeTmp'
+    Makefile:126: recipe for target 'cmTC_00282/fast' failed
+    mingw32-make.exe: *** [cmTC_00282/fast] Error 2
+    
+    
+
+  
+
+  CMake will not be able to correctly generate this project.
+Call Stack (most recent call first):
+  CMakeLists.txt:2 (project)
+
+
+-- Configuring incomplete, errors occurred!
+See also "C:/Users/WaitingForWind/OneDrive/CODE/untitled/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+See also "C:/Users/WaitingForWind/OneDrive/CODE/untitled/cmake-build-debug/CMakeFiles/CMakeError.log".
+
+无法获取编译器信息:
+	编译器退出，错误代码 1: C:\Program Files\JetBrains\CLion 2022.1.2\bin\mingw\bin\g++.exe -xc++ -g -std=gnu++14 -fpch-preprocess -v -dD -E
+	Using built-in specs.
+	COLLECT_GCC=C:\Program Files\JetBrains\CLion 2022.1.2\bin\mingw\bin\g++.exe
+	Target: x86_64-w64-mingw32
+	Configured with: ../gcc-11.2.0/configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --build=x86_64-alpine-linux-musl --prefix=/win --enable-checking=release --enable-fully-dynamic-string --enable-languages=c,c++ --enable-libatomic --enable-libgomp --enable-libstdcxx-filesystem-ts=yes --enable-libstdcxx-time=yes --enable-seh-exceptions --enable-shared --enable-static --enable-threads=posix --enable-version-specific-runtime-libs --disable-bootstrap --disable-graphite --disable-libada --disable-libstdcxx-pch --disable-libstdcxx-debug --disable-libquadmath --disable-lto --disable-nls --disable-multilib --disable-rpath --disable-symvers --disable-werror --disable-win32-registry --with-gnu-as --with-gnu-ld --with-system-libiconv --with-system-libz --with-gmp=/win/makedepends --with-mpfr=/win/makedepends --with-mpc=/win/makedepends
+	Thread model: posix
+	Supported LTO compression algorithms: zlib
+	gcc version 11.2.0 (GCC) 
+	COLLECT_GCC_OPTIONS='-g' '-std=gnu++14' '-fpch-preprocess' '-v' '-dD' '-E' '-D' '___CIDR_DEFINITIONS_END' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+	 C:/Program Files/JetBrains/CLion 2022.1.2/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/cc1plus.exe -E -quiet -v -iprefix C:/Program Files/JetBrains/CLion 2022.1.2/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/ -D_REENTRANT -D ___CIDR_DEFINITIONS_END C:\Users\WaitingForWind\AppData\Local\Temp\compiler-file14446847767798464160 -mtune=generic -march=x86-64 -std=gnu++14 -fpch-preprocess -g -fworking-directory -dD -dumpbase compiler-file14446847767798464160
+	
+	

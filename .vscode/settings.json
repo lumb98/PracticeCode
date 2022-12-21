@@ -52,5 +52,13 @@
         "streambuf": "cpp",
         "typeinfo": "cpp",
         "future": "cpp"
-    }
+    },
+    "python.autoComplete.extraPaths": ["C:\\Users\\www_7\\.conda\\envs\\pytorch_py3.9\\python.exe"
+    
+    ],
+    "python.analysis.extraPaths": [
+        "C:\\Users\\www_7\\.conda\\envs\\pytorch_py3.9\\python.exe"
+    ]
+
+    
 }

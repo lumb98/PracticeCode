@@ -1,0 +1,12 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/WaitingForWind/OneDrive/CODE/test/Core/Startup/startup_stm32f103zetx.s
+
+C:/Users/WaitingForWind/OneDrive/CODE/test/startup/startup_stm32f103xe.s
+
